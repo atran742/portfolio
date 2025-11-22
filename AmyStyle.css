@@ -1,0 +1,163 @@
+.img-container {
+    position: relative;
+    width: 1625px;
+    height: 500px; /* or any height you want */
+    overflow: hidden; /* hides overflow if image is larger */
+}
+
+.img-container img {
+    width: 1625px;
+    display: block;
+    object-fit: cover; /* fills container without distortion */
+    position: absolute;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: black;
+}
+
+
+.fade-in {
+    animation: fadeIn 1s ease-in forwards;
+}
+
+.fade-in-text {
+    animation: fadeInText 2s ease-in forwards;
+}
+
+.img-container-text {
+    position: absolute;
+    top: 10%;                 /* center vertically */
+    right:  15%;
+    color: white;
+    font-size: 70px;
+    font-weight: bold;
+    text-align: center;
+    opacity: 0;
+    /* start invisible */
+}
+
+
+.social-icons {
+    display: flex;
+    gap: 20px;              /* spacing between icons */
+    position: absolute;     /* put them anywhere */
+    top: 30px;           /* example placement */
+    right: 30px;
+}
+
+.social-icons a {
+    color: white;           /* icon color */
+    font-size: 2.0rem;      /* icon size */
+    transition: 0.3s;
+}
+
+.social-icons a:hover {
+    color: #0ab2ff;         /* hover effect */
+    transform: scale(1.2);  /* slight zoom on hover */
+}
+
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0.25;      /* start invisible */
+    }
+    100% {
+        opacity: 1;      /* fully visible */
+    }
+}
+
+@keyframes fadeInText {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+.blackbox1{
+    width: 1625px;
+    height: 400px;
+    background-color: #262524;
+    color: white;
+    text-align: center;
+    font-size: 30px;
+    padding: 20px;
+}
+.projects-container{
+    width: 100%;
+    position: relative;
+    height: 550px;
+    background-color: cornsilk;
+    padding: 20px;
+    overflow: visible;
+}
+.blackbox2{
+    width: 100%;
+    height: 100px;
+    background-color: black;
+}
+
+.subtitle {
+    font-size: 25px;
+    text-align: left;
+    padding-left: 30px; /* <-- smaller text is left aligned */
+    max-width: 100%;      /* optional: keeps it readable */
+}
+
+.site-wrapper{
+    max-width: 1625px;   /* make your site narrower */
+    margin: 0 auto;      /* centers the entire site */
+    padding: 0 20px;
+}
+.featruedProjTitle{
+    text-align: center;
+    padding-top: 10px;
+    font-size: 50px;
+}
+
+
+/* Holds all 4 buttons in a row */
+.button-row {
+    display: flex;
+    justify-content: center;   /* centers them horizontally */
+    gap: 30px;                 /* space between buttons */
+    margin-top: 40px;
+}
+
+/* Button box */
+.image-button {
+    position: relative;
+    display: block;
+    width: 230px;
+    height: 230px;
+    overflow: hidden;
+    text-decoration: none;
+    border-radius: 20px;     /* optional */
+}
+
+/* Image */
+.image-button img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(50%);
+    transition: filter 0.3s ease;
+}
+
+/* Darken on hover */
+.image-button:hover img {
+    filter: brightness(30%);
+}
+
+/* Text overlay */
+.button-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 1.4rem;
+    font-weight: 600;
+    pointer-events: none;
+    text-align: center;
+}
