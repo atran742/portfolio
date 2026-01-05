@@ -1,0 +1,45 @@
+
+.Text{
+    text-align: center;
+    font-size: 50px;
+
+}
+body{
+    margin: 0;
+    height: 100vh;              /* full page height */
+    display: flex;
+    justify-content: center;    /* center horizontally */
+    align-items: center;
+    background-color: burlywood/* center vertically */
+}
+
+.home-link {
+    color: white;           /* icon color */
+    font-size: 2.0rem;      /* icon size */
+    transition: 0.3s;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    z-index: 10;
+}
+
+.home-link:hover {
+    color: #0ab2ff;         /* hover effect */
+    transform: scale(1.2);  /* slight zoom on hover */
+}
+
+.crop-box {
+    width: 500px;   /* final cropped width */
+    height: 300px;  /* final cropped height */
+    overflow: hidden;   /* hides the parts you don't want */
+    position: relative;
+    border-radius: 15px;
+}
+
+.crop-box iframe {
+    position: absolute;
+    top: -50px;     /* move video up to crop top */
+    left: -100px;   /* move left/right to crop sides */
+    width: 560px;   /* original iframe width */
+    height: 315px;  /* original iframe height */
+}
