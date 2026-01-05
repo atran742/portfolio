@@ -46,8 +46,8 @@
 
 .weatherApp {
     margin-left: auto;   /* pushes image to right */
-    width: auto;        /* adjust image size */
-    height: auto;
+    /*width: auto; */       /* adjust image size */
+    /*height: auto;*/
     padding: 50px;
 }
 
@@ -86,29 +86,39 @@ body{
     justify-content: space-between;
     gap: 40px;
     width: 100%;
+    height: 700px;
     background-color: dimgrey;
     padding: 40px;
     box-sizing: border-box;
 
 }
 
-.video-box video {
-    width: 600px;
-    height: auto;
+.video-box  {
+    width: 300px;
+    height: 300px;
+    border-radius: 10px;
+
+}
+
+.video-box img {
+    width: 800px;     /* 👈 smaller */
+    height: auto;     /* keeps aspect ratio */
     border-radius: 10px;
 }
 
+
 .text-box {
     color: black;
-    width: 40%;
+    max-width: 600px;
     font-size: 30px;
-    right:10%;
+    justify-self: right;
     padding-right: 10px;
 
 }
 
 .heistDis-1{
     font-size: 20px;
+
 }
 
 
