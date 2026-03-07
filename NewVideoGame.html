@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI & Data Science — Amy Tran</title>
+    <title>Video Games — Amy Tran</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Tenor+Sans&family=Montserrat:wght@200;300;400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
@@ -17,8 +17,8 @@
             --gold: #c9a96e;
             --gold-light: #e8d5b0;
             --text-muted: #888;
-            --green-dark: #071a0f;
-            --slate-dark: #0d1117;
+            --purple-dark: #1a0d2e;
+            --brown-dark: #2a1008;
         }
 
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -77,7 +77,7 @@
             height: 100%;
             object-fit: cover;
             object-position: center;
-            filter: brightness(0.4) blur(3px);
+            filter: brightness(0.45) blur(3px);
             transform: scale(1.06);
             animation: heroZoom 10s ease forwards;
         }
@@ -155,25 +155,21 @@
         .project-media {
             position: relative;
             overflow: hidden;
-            background: #0a0a0a;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            background: #000;
         }
 
-        .project-media img {
+        .project-media iframe {
             width: 100%;
             height: 100%;
-            object-fit: contain;
-            padding: 40px;
+            min-height: 420px;
+            border: none;
             display: block;
             filter: brightness(0.9);
-            transition: filter 0.4s ease, transform 0.6s ease;
+            transition: filter 0.4s ease;
         }
 
-        .project-section:hover .project-media img {
+        .project-section:hover .project-media iframe {
             filter: brightness(1);
-            transform: scale(1.02);
         }
 
         .project-info {
@@ -184,10 +180,11 @@
             position: relative;
         }
 
-        .section-charcoal { background-color: var(--charcoal); }
-        .section-green    { background-color: var(--green-dark); }
-        .section-slate    { background-color: var(--slate-dark); }
-        .section-warm     { background-color: #1a140a; }
+        /* Alternating section backgrounds */
+        .section-dark    { background-color: var(--charcoal); }
+        .section-purple  { background-color: var(--purple-dark); }
+        .section-brown   { background-color: var(--brown-dark); }
+        .section-warm    { background-color: #1a140a; }
 
         .project-number {
             font-size: 0.6rem;
@@ -238,6 +235,30 @@
 
         .tag:hover { border-color: var(--gold); color: var(--gold); }
 
+        .project-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 0.65rem;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            color: var(--gold);
+            text-decoration: none;
+            padding: 14px 28px;
+            border: 1px solid var(--gold);
+            width: fit-content;
+            transition: all 0.3s ease;
+        }
+
+        .project-cta:hover {
+            background: var(--gold);
+            color: var(--black);
+            gap: 18px;
+        }
+
+        .project-cta::after { content: '→'; }
+
+        /* vertical accent line on info panels */
         .project-info::before {
             content: '';
             position: absolute;
@@ -246,6 +267,9 @@
             background: linear-gradient(to bottom, transparent, var(--gold), transparent);
             opacity: 0.25;
         }
+
+        .section-purple .project-info::before,
+        .section-brown  .project-info::before { opacity: 0.2; }
 
         /* ── SCROLL REVEAL ── */
         .reveal {
@@ -302,64 +326,123 @@
 
 <!-- Hero Banner -->
 <section class="hero">
-    <img src="images/datascience.jpeg" alt="AI and Data Science Banner">
+    <img src="images/sagauroBanner.png" alt="Video Games Banner">
     <div class="hero-overlay"></div>
     <div class="hero-content">
-        <p class="hero-eyebrow">Portfolio — AI & Data Science</p>
-        <h1 class="hero-title">ML, AI &amp;<br><em>Data Science</em></h1>
+        <p class="hero-eyebrow">Portfolio — Game Development</p>
+        <h1 class="hero-title">Video Game<br><em>Projects</em></h1>
     </div>
 </section>
 
 <div class="gold-divider"></div>
 
-<!-- ── 01 Image Captioner ── -->
+<!-- ── 01 Saguaro ── -->
 <div class="project-section reveal">
-    <div class="project-media section-charcoal">
-        <img src="images/imageCapt.png" alt="Image Captioner App">
+    <div class="project-media section-dark">
+        <iframe
+                src="https://www.youtube.com/embed/kGJCbkwspi4?autoplay=1&mute=1&loop=1&start=220&end=350&playlist=kGJCbkwspi4"
+                allow="autoplay; encrypted-media" allowfullscreen>
+        </iframe>
     </div>
-    <div class="project-info section-green">
-        <div class="project-number">01 — Computer Vision / Python</div>
-        <h2 class="project-title">The Image<br><em>Captioner</em></h2>
+    <div class="project-info section-purple">
+        <div class="project-number">01 — Unity / 2D Platformer</div>
+        <h2 class="project-title"><em>Saguaro</em></h2>
         <p class="project-desc">
-            An application built with cv2, YOLO, BLIP, and Tkinter alongside a team of 4.
-            Users can input any video or image and the app will automatically identify. I designed the entire frontend and helped select the
-            AI models powering the detections.
+            A 2D platformer game developed in Unity with the Aztec Game Lab. The
+            game is about a kangaroo rat traversing the Saguaro desert as it collects resources
+            such as cactus spikes and seeds to defeat the snake boss. The project was completed with
+            a group of 40 other people and is available on itch.io. I was a level designer for the project
+            and was in charge of sketching out the main level as well as determining the player values
+            such as jump height and speed.
         </p>
         <div class="project-tags">
-            <span class="tag">Python</span>
-            <span class="tag">YOLO</span>
-            <span class="tag">BLIP</span>
-            <span class="tag">cv2</span>
-            <span class="tag">Tkinter</span>
-            <span class="tag">Team of 5</span>
+            <span class="tag">Unity</span>
+            <span class="tag">Level Design</span>
+            <span class="tag">Team of 40</span>
+            <span class="tag">itch.io</span>
+        </div>
+        <a href="https://aztec-game-lab.itch.io/saguaro" target="_blank" class="project-cta">Play Now</a>
+    </div>
+</div>
+
+<div class="gold-divider"></div>
+
+<!-- ── 02 The Heist ── -->
+<div class="project-section reverse reveal">
+    <div class="project-media section-dark">
+        <iframe
+                src="https://www.youtube.com/embed/CrSDr128zuA?si=Jzd5xjGMON0F_TZJ&autoplay=1&mute=1&start=25&end=90&loop=1&playlist=CrSDr128zuA"
+                allow="autoplay; encrypted-media" allowfullscreen>
+        </iframe>
+    </div>
+    <div class="project-info section-warm">
+        <div class="project-number">02 — Unity / Top-Down</div>
+        <h2 class="project-title">The <em>Heist</em></h2>
+        <p class="project-desc">
+            A 2D top down game created with Unity in a team of 4 people.
+            The game allows for players to traverse an abandoned bank taken over by robots
+            as they steal cash and try to avoid getting caught by any robots. I contributed
+            as programmer, level designer, art, and story for this project.
+        </p>
+        <div class="project-tags">
+            <span class="tag">Unity</span>
+            <span class="tag">Programming</span>
+            <span class="tag">Art</span>
+            <span class="tag">Narrative</span>
         </div>
     </div>
 </div>
 
 <div class="gold-divider"></div>
 
-<!-- ── 02 Surveillance Research ── -->
-<div class="project-section reverse reveal">
-    <div class="project-media section-charcoal">
-        <img src="images/survPics.png" alt="Surveillance Research Findings">
+<!-- ── 03 The Submarine ── -->
+<div class="project-section reveal">
+    <div class="project-media section-dark">
+        <iframe
+                src="https://www.youtube.com/embed/Gf7D4vu19g4?si=RyatqQRbx0JjJXyh&start=50&end=116&autoplay=1&mute=1&loop=1&playlist=Gf7D4vu19g4"
+                allow="autoplay; encrypted-media" allowfullscreen>
+        </iframe>
     </div>
-    <div class="project-info section-slate">
-        <div class="project-number">02 — Data Science / Research</div>
-        <h2 class="project-title">Surveillance<br><em>Research</em></h2>
+    <div class="project-info section-brown">
+        <div class="project-number">03 — Unity / Exploration</div>
+        <h2 class="project-title">The <em>Submarine</em></h2>
         <p class="project-desc">
-            A two-person research project investigating how U.S. law enforcement agencies
-            use surveillance technologies and what that means for public privacy. Using four
-            datasets, we built graphs and visualizations, applied SQL to find trends, and
-            trained a Random Forest classification model to predict the probability of each
-            technology being used by a given agency type. Model accuracy was evaluated
-            using F1 scores for precision and recall.
+            A 2D game created with a team of 6 people. The game allows
+            players to explore a deep lake and meet large aquatic monsters. Players should be
+            able to traverse and shoot at under sea boulders and collect resources. I acted as
+            a programmer for this project.
         </p>
         <div class="project-tags">
-            <span class="tag">Python</span>
-            <span class="tag">SQL</span>
-            <span class="tag">Random Forest</span>
-            <span class="tag">Data Viz</span>
-            <span class="tag">F1 Score</span>
+            <span class="tag">Unity</span>
+            <span class="tag">Programming</span>
+            <span class="tag">Team of 6</span>
+        </div>
+    </div>
+</div>
+
+<div class="gold-divider"></div>
+
+<!-- ── 04 Cup Match ── -->
+<div class="project-section reverse reveal">
+    <div class="project-media section-dark">
+        <iframe
+                src="https://www.youtube.com/embed/J6Wo9Z0QI3I?si=8h453TdYfEVxTgQB&autoplay=1&mute=1&end=48&loop=1&playlist=J6Wo9Z0QI3I"
+                allow="autoplay; encrypted-media" allowfullscreen>
+        </iframe>
+    </div>
+    <div class="project-info section-purple">
+        <div class="project-number">04 — Unity / Puzzle</div>
+        <h2 class="project-title">Cup <em>Matching</em></h2>
+        <p class="project-desc">
+            Inspired by the Cup matching game from Tik Tok, this
+            2D Unity game allows users to drag and drop their guesses for a specific cup.
+            Once the player has correctly identified all the cups positions, they will win
+            the game.
+        </p>
+        <div class="project-tags">
+            <span class="tag">Unity</span>
+            <span class="tag">Puzzle</span>
+            <span class="tag">Drag & Drop</span>
         </div>
     </div>
 </div>
@@ -367,7 +450,7 @@
 <!-- Footer -->
 <footer>
     <span class="footer-name">Amy Tran</span>
-    <span class="footer-copy">© 2025 — AI &amp; Data Science</span>
+    <span class="footer-copy">© 2025 — Game Development</span>
     <div class="footer-icons">
         <a href="https://github.com/atran742" target="_blank"><i class="fab fa-github"></i></a>
         <a href="https://www.linkedin.com/in/amy-tran-296a21368" target="_blank"><i class="fab fa-linkedin"></i></a>

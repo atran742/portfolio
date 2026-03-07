@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Websites & Apps — Amy Tran</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Tenor+Sans&family=Montserrat:wght@200;300;400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <style>
+    :root {
+      --cream: #f5f0e8;
+      --black: #0a0a0a;
+      --charcoal: #1a1a1a;
+      --warm-gray: #2e2b28;
+      --gold: #c9a96e;
+      --gold-light: #e8d5b0;
+      --text-muted: #888;
+      --teal-dark: #071a1a;
+      --orange-dark: #1a0e00;
+      --brown-dark: #2a1008;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      background-color: var(--black);
+      color: var(--cream);
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 300;
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 28px 60px;
+      background: linear-gradient(to bottom, rgba(10,10,10,0.95), transparent);
+    }
+
+    .nav-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.3rem;
+      font-weight: 300;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--cream);
+      text-decoration: none;
+    }
+
+    .nav-home {
+      color: var(--cream);
+      font-size: 1.1rem;
+      opacity: 0.75;
+      text-decoration: none;
+      transition: color 0.3s, transform 0.3s, opacity 0.3s;
+    }
+    .nav-home:hover { color: var(--gold); transform: translateY(-2px); opacity: 1; }
+
+    /* ── HERO BANNER ── */
+    .hero {
+      position: relative;
+      width: 100%;
+      height: 55vh;
+      min-height: 380px;
+      overflow: hidden;
+    }
+
+    .hero img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      filter: brightness(0.4) blur(3px);
+      transform: scale(1.06);
+      animation: heroZoom 10s ease forwards;
+    }
+
+    @keyframes heroZoom {
+      from { transform: scale(1.06); }
+      to   { transform: scale(1); }
+    }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to bottom,
+        rgba(10,10,10,0.2) 0%,
+        rgba(10,10,10,0.3) 50%,
+        rgba(10,10,10,0.92) 100%
+      );
+    }
+
+    .hero-content {
+      position: absolute;
+      bottom: 60px;
+      left: 60px;
+      right: 60px;
+    }
+
+    .hero-eyebrow {
+      font-size: 0.65rem;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 16px;
+      opacity: 0;
+      animation: slideUp 1s ease 0.3s forwards;
+    }
+
+    .hero-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(3rem, 7vw, 6rem);
+      font-weight: 300;
+      line-height: 0.95;
+      opacity: 0;
+      animation: slideUp 1s ease 0.5s forwards;
+    }
+
+    .hero-title em {
+      font-style: italic;
+      color: var(--gold-light);
+    }
+
+    @keyframes slideUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ── GOLD DIVIDER ── */
+    .gold-divider {
+      height: 1px;
+      background: linear-gradient(to right, transparent, var(--gold), transparent);
+      opacity: 0.3;
+    }
+
+    /* ── PROJECT SECTIONS ── */
+    .project-section {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: 520px;
+      overflow: hidden;
+    }
+
+    .project-section.reverse { direction: rtl; }
+    .project-section.reverse > * { direction: ltr; }
+
+    .project-media {
+      position: relative;
+      overflow: hidden;
+      background: #000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .project-media img,
+    .project-media video {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: block;
+      filter: brightness(0.88);
+      transition: filter 0.4s ease, transform 0.6s ease;
+    }
+
+    .project-section:hover .project-media img,
+    .project-section:hover .project-media video {
+      filter: brightness(1);
+      transform: scale(1.02);
+    }
+
+    .project-info {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 70px 60px;
+      position: relative;
+    }
+
+    .section-dark    { background-color: var(--charcoal); }
+    .section-teal    { background-color: var(--teal-dark); }
+    .section-brown   { background-color: var(--brown-dark); }
+    .section-orange  { background-color: var(--orange-dark); }
+    .section-warm    { background-color: #1a140a; }
+
+    .project-number {
+      font-size: 0.6rem;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 20px;
+    }
+
+    .project-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.2rem, 4vw, 3.5rem);
+      font-weight: 300;
+      line-height: 1;
+      margin-bottom: 24px;
+      color: var(--cream);
+    }
+
+    .project-title em {
+      font-style: italic;
+      color: var(--gold-light);
+    }
+
+    .project-desc {
+      font-size: 0.85rem;
+      line-height: 1.85;
+      color: #b0a898;
+      margin-bottom: 36px;
+      max-width: 480px;
+    }
+
+    .project-tags {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 36px;
+    }
+
+    .tag {
+      font-size: 0.6rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      border: 1px solid #3a3a3a;
+      padding: 6px 14px;
+      color: var(--text-muted);
+      transition: all 0.3s ease;
+    }
+
+    .tag:hover { border-color: var(--gold); color: var(--gold); }
+
+    .project-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 0.65rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--gold);
+      text-decoration: none;
+      padding: 14px 28px;
+      border: 1px solid var(--gold);
+      width: fit-content;
+      transition: all 0.3s ease;
+    }
+
+    .project-cta:hover {
+      background: var(--gold);
+      color: var(--black);
+      gap: 18px;
+    }
+
+    .ss {
+      grid-template-columns: 1fr 2fr;
+    }
+
+    .ss .project-media img,
+    .ss .project-media video {
+      max-height: 650px;
+      object-fit: cover;
+    }
+
+    .project-cta::after { content: '→'; }
+
+    .project-info::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 15%; bottom: 15%;
+      width: 1px;
+      background: linear-gradient(to bottom, transparent, var(--gold), transparent);
+      opacity: 0.25;
+    }
+
+    /* ── SCROLL REVEAL ── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.9s cubic-bezier(0.16,1,0.3,1),
+                  transform 0.9s cubic-bezier(0.16,1,0.3,1);
+    }
+    .reveal.visible { opacity: 1; transform: none; }
+
+    /* ── FOOTER ── */
+    footer {
+      background-color: var(--charcoal);
+      border-top: 1px solid #222;
+      padding: 60px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .footer-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.8rem;
+      font-weight: 300;
+      font-style: italic;
+      color: var(--gold-light);
+      opacity: 0.7;
+    }
+
+    .footer-copy {
+      font-size: 0.6rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+
+    .footer-icons { display: flex; gap: 24px; }
+    .footer-icons a {
+      color: var(--text-muted);
+      font-size: 1rem;
+      text-decoration: none;
+      transition: color 0.3s, transform 0.3s;
+    }
+    .footer-icons a:hover { color: var(--gold); transform: translateY(-3px); }
+  </style>
+</head>
+<body>
+
+  <!-- Nav -->
+  <nav>
+    <a href="index.html" class="nav-logo">Amy Tran</a>
+    <a href="index.html" class="nav-home" aria-label="Home"><i class="fa-solid fa-house"></i></a>
+  </nav>
+
+  <!-- Hero Banner -->
+  <section class="hero">
+    <img src="images/ChineseZod.png" alt="Websites and Apps Banner">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <p class="hero-eyebrow">Portfolio — Web & Mobile</p>
+      <h1 class="hero-title">Websites<br><em>&amp; Apps</em></h1>
+    </div>
+  </section>
+
+  <div class="gold-divider"></div>
+
+  <!-- ── 01 Todo List ── -->
+  <div class="project-section reveal ss">
+    <div class="project-media section-dark">
+      <video autoplay muted loop playsinline>
+        <source src="videos/todoListApp.mov" type="video/mp4">
+      </video>
+    </div>
+    <div class="project-info section-teal">
+      <div class="project-number">01 — React Native / Mobile</div>
+      <h2 class="project-title">The Todo<br><em>List App</em></h2>
+      <p class="project-desc">
+        A mobile app built with React Native and Expo Go that lets users add tasks,
+        mark them as complete, and retrieve previously deleted tasks. Clean,
+        functional, and built for everyday use.
+      </p>
+      <div class="project-tags">
+        <span class="tag">React Native</span>
+        <span class="tag">Expo Go</span>
+        <span class="tag">Mobile</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="gold-divider"></div>
+
+  <!-- ── 02 Wavelength ── -->
+  <div class="project-section reverse reveal">
+    <div class="project-media section-dark">
+      <img src="images/wavelength.png" alt="Wavelength Game screenshot">
+    </div>
+    <div class="project-info section-warm">
+      <div class="project-number">02 — Web / Game</div>
+      <h2 class="project-title">The Wavelength<br><em>Game</em></h2>
+      <p class="project-desc">
+        A guessing game where players receive two opposing options and a number, then
+        must give a hint that best aligns with that position on the scale. For example,
+        given "Savory vs Sweet" at 15 out of 20 — "peanut butter" hits just right.
+      </p>
+      <div class="project-tags">
+        <span class="tag">JavaScript</span>
+        <span class="tag">Web Game</span>
+        <span class="tag">GitHub Pages</span>
+      </div>
+      <a href="https://atran742.github.io/WavelengthGame/" target="_blank" class="project-cta">Play Now</a>
+    </div>
+  </div>
+
+  <div class="gold-divider"></div>
+
+  <!-- ── 03 Weather App ── -->
+  <div class="project-section reveal ss">
+    <div class="project-media section-dark">
+      <img src="images/weather app.png" alt="Weather App screenshot">
+    </div>
+    <div class="project-info section-brown">
+      <div class="project-number">03 — React Native / Mobile</div>
+      <h2 class="project-title">The Weather<br><em>App</em></h2>
+      <p class="project-desc">
+        A React Native app showing current weather and forecasts every 3 hours
+        for up to 5 days ahead. Powered by a live weather API that automatically
+        updates based on the user's current location.
+      </p>
+      <div class="project-tags">
+        <span class="tag">React Native</span>
+        <span class="tag">Weather API</span>
+        <span class="tag">Mobile</span>
+        <span class="tag">Live Data</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="gold-divider"></div>
+
+  <!-- ── 04 Chinese Zodiac ── -->
+  <div class="project-section reverse reveal">
+    <div class="project-media section-dark">
+      <img src="images/ChineseZod.png" alt="Chinese Zodiac Website screenshot">
+    </div>
+    <div class="project-info section-orange">
+      <div class="project-number">04 — Web / Interactive</div>
+      <h2 class="project-title">Chinese<br><em>Zodiac</em></h2>
+      <p class="project-desc">
+        Enter your birthday to discover your Chinese Zodiac sign. Features a
+        custom spinning animation and a clean, interactive interface built
+        entirely for the web.
+      </p>
+      <div class="project-tags">
+        <span class="tag">HTML/CSS/JS</span>
+        <span class="tag">Animation</span>
+        <span class="tag">GitHub Pages</span>
+      </div>
+      <a href="https://atran742.github.io/ChineseZodiacWebsite/" target="_blank" class="project-cta">View Live</a>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <span class="footer-name">Amy Tran</span>
+    <span class="footer-copy">© 2025 — Websites &amp; Apps</span>
+    <div class="footer-icons">
+      <a href="https://github.com/atran742" target="_blank"><i class="fab fa-github"></i></a>
+      <a href="https://www.linkedin.com/in/amy-tran-296a21368" target="_blank"><i class="fab fa-linkedin"></i></a>
+      <a href="mailto:amytran0704@icloud.com"><i class="far fa-envelope"></i></a>
+    </div>
+  </footer>
+
+  <script>
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  </script>
+
+</body>
+</html>

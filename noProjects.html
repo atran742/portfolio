@@ -2,28 +2,193 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Error no projects found :( </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coming Soon — Amy Tran</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Montserrat:wght@200;300;400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <style>
+        :root {
+            --cream: #f5f0e8;
+            --black: #0a0a0a;
+            --charcoal: #1a1a1a;
+            --gold: #c9a96e;
+            --gold-light: #e8d5b0;
+            --text-muted: #888;
+        }
+
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            background-color: var(--black);
+            color: var(--cream);
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 300;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        /* subtle animated grain overlay */
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+            pointer-events: none;
+            z-index: 0;
+            opacity: 0.4;
+        }
+
+        /* nav home icon */
+        .nav-home {
+            position: fixed;
+            top: 30px;
+            right: 40px;
+            color: var(--cream);
+            font-size: 1.1rem;
+            opacity: 0.6;
+            text-decoration: none;
+            transition: color 0.3s, transform 0.3s, opacity 0.3s;
+            z-index: 10;
+        }
+        .nav-home:hover { color: var(--gold); transform: translateY(-2px); opacity: 1; }
+
+        /* nav logo */
+        .nav-logo {
+            position: fixed;
+            top: 28px;
+            left: 40px;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.2rem;
+            font-weight: 300;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: var(--cream);
+            text-decoration: none;
+            opacity: 0.7;
+            z-index: 10;
+            transition: opacity 0.3s;
+        }
+        .nav-logo:hover { opacity: 1; }
+
+        /* center content */
+        .container {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 28px;
+            animation: fadeUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(40px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+
+        .eyebrow {
+            font-size: 0.65rem;
+            letter-spacing: 0.4em;
+            text-transform: uppercase;
+            color: var(--gold);
+        }
+
+        .main-text {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(3rem, 8vw, 6.5rem);
+            font-weight: 300;
+            line-height: 1;
+            color: var(--cream);
+        }
+
+        .main-text em {
+            font-style: italic;
+            color: var(--gold-light);
+        }
+
+        .sub-text {
+            font-size: 0.8rem;
+            letter-spacing: 0.15em;
+            color: var(--text-muted);
+            max-width: 360px;
+            line-height: 1.8;
+        }
+
+        /* animated gold line */
+        .gold-line {
+            width: 60px;
+            height: 1px;
+            background: var(--gold);
+            opacity: 0.5;
+            animation: expandLine 1.5s cubic-bezier(0.16, 1, 0.3, 1) 0.4s both;
+        }
+
+        @keyframes expandLine {
+            from { width: 0; opacity: 0; }
+            to   { width: 60px; opacity: 0.5; }
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 0.65rem;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            color: var(--gold);
+            text-decoration: none;
+            padding: 14px 32px;
+            border: 1px solid rgba(201, 169, 110, 0.4);
+            margin-top: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .back-link::before { content: '←'; }
+        .back-link:hover {
+            background: var(--gold);
+            color: var(--black);
+            border-color: var(--gold);
+            gap: 18px;
+        }
+
+        /* floating decorative numbers */
+        .deco {
+            position: fixed;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 18vw;
+            font-weight: 300;
+            color: rgba(201, 169, 110, 0.03);
+            pointer-events: none;
+            user-select: none;
+            line-height: 1;
+        }
+        .deco-left  { left: -4vw; bottom: -4vh; }
+        .deco-right { right: -4vw; top: -4vh; }
+    </style>
 </head>
 <body>
-<a href="index.html" class="home-link">
-  <i class="fa-solid fa-house"></i>
-</a>
-<div class="Text">No projects finished yet, but stay tuned!</div>
 
-<!--<div class="crop-box">-->
-    <!--<iframe
-            src="https://www.youtube.com/embed/kGJCbkwspi4?autoplay=1&mute=1&loop=1&start=200&end=3000&playlist=kGJCbkwspi4"
-            &lt;!&;frameborder="0"
-            allow="autoplay; encrypted-media"
-            allowfullscreen>&;&gt;
-    </iframe>-->
-<!--
+<a href="index.html" class="nav-logo">Amy Tran</a>
+<a href="index.html" class="nav-home" aria-label="Home"><i class="fa-solid fa-house"></i></a>
+
+<!-- decorative background text -->
+<span class="deco deco-left">00</span>
+<span class="deco deco-right">—</span>
+
+<div class="container">
+    <p class="eyebrow">Other Projects</p>
+    <div class="gold-line"></div>
+    <h1 class="main-text">Coming<br><em>Soon.</em></h1>
+    <p class="sub-text">No projects here yet — but something is always in the works. Check back soon.</p>
+    <a href="index.html" class="back-link">Back to Portfolio</a>
 </div>
--->
 
 </body>
-
-<link rel="stylesheet" href="CSSfiles/noProjects.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-
 </html>
