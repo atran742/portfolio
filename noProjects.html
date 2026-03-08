@@ -44,25 +44,18 @@
             opacity: 0.4;
         }
 
-        /* nav home icon */
-        .nav-home {
+        nav {
             position: fixed;
-            top: 30px;
-            right: 40px;
-            color: var(--cream);
-            font-size: 1.1rem;
-            opacity: 0.6;
-            text-decoration: none;
-            transition: color 0.3s, transform 0.3s, opacity 0.3s;
-            z-index: 10;
+            top: 0; left: 0; right: 0;
+            z-index: 100;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 28px 60px;
+            background: linear-gradient(to bottom, rgba(10,10,10,0.95), transparent);
         }
-        .nav-home:hover { color: var(--gold); transform: translateY(-2px); opacity: 1; }
 
-        /* nav logo */
         .nav-logo {
-            position: fixed;
-            top: 28px;
-            left: 40px;
             font-family: 'Cormorant Garamond', serif;
             font-size: 1.2rem;
             font-weight: 300;
@@ -71,9 +64,24 @@
             color: var(--cream);
             text-decoration: none;
             opacity: 0.7;
-            z-index: 10;
             transition: opacity 0.3s;
         }
+        .nav-logo:hover { opacity: 1; }
+
+        .nav-home {
+            color: var(--cream);
+            font-size: 1.1rem;
+            opacity: 0.75;
+            text-decoration: none;
+            transition: color 0.3s, transform 0.3s, opacity 0.3s;
+        }
+        .nav-home:hover { color: var(--gold); transform: translateY(-2px); opacity: 1; }
+        /* nav home icon */
+
+        .nav-home:hover { color: var(--gold); transform: translateY(-2px); opacity: 1; }
+
+        /* nav logo */
+
         .nav-logo:hover { opacity: 1; }
 
         /* center content */
@@ -171,13 +179,103 @@
         }
         .deco-left  { left: -4vw; bottom: -4vh; }
         .deco-right { right: -4vw; top: -4vh; }
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 28px;
+        }
+
+        .nav-dropdown {
+            position: relative;
+        }
+
+        .nav-projects-label {
+            font-size: 0.7rem;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            color: var(--cream);
+            opacity: 0.75;
+            cursor: default;
+            transition: color 0.3s, opacity 0.3s;
+        }
+
+        .nav-dropdown:hover .nav-projects-label {
+            color: var(--gold);
+            opacity: 1;
+        }
+
+        .dropdown-menu {
+            position: absolute;
+            top: calc(100% + 16px);
+            right: 0;
+            background: rgba(15, 15, 15, 0.97);
+            border: 1px solid #2a2a2a;
+            border-top: 1px solid var(--gold);
+            min-width: 220px;
+            display: flex;
+            flex-direction: column;
+            opacity: 0;
+            pointer-events: none;
+            transform: translateY(8px);
+            transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+
+        .nav-dropdown:hover .dropdown-menu {
+            opacity: 1;
+            pointer-events: all;
+            transform: translateY(0);
+        }
+
+        .dropdown-menu a {
+            font-size: 0.65rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            text-decoration: none;
+            padding: 16px 24px;
+            border-bottom: 1px solid #1a1a1a;
+            transition: color 0.3s, padding-left 0.3s;
+        }
+
+        .dropdown-menu a:last-child { border-bottom: none; }
+
+        .dropdown-menu a:hover {
+            color: var(--gold);
+            padding-left: 32px;
+        }
+        .nav-dropdown::after {
+            content: '';
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            height: 20px;
+        }
+        .nav-dropdown:hover .dropdown-menu {
+            opacity: 1;
+            pointer-events: all;
+            transform: translateY(0);
+        }
     </style>
 </head>
 <body>
 
-<a href="index.html" class="nav-logo">Amy Tran</a>
-<a href="index.html" class="nav-home" aria-label="Home"><i class="fa-solid fa-house"></i></a>
-
+<nav>
+    <a href="index.html" class="nav-logo">Amy Tran</a>
+    <div class="nav-right">
+        <a href="index.html" class="nav-home" aria-label="Home"><i class="fa-solid fa-house"></i></a>
+        <div class="nav-dropdown">
+            <span class="nav-projects-label">Projects</span>
+            <div class="dropdown-menu">
+                <a href="NewVideoGame.html">Video Game Dev</a>
+                <a href="NewWebsites.html">Websites &amp; Apps</a>
+                <a href="AiProjects.html">ML, AI &amp; Data Science</a>
+                <a href="noProjects.html">Other Projects</a>
+            </div>
+        </div>
+    </div>
+</nav>
 <!-- decorative background text -->
 <span class="deco deco-left">00</span>
 <span class="deco deco-right">—</span>
