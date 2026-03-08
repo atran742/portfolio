@@ -63,6 +63,80 @@
         }
         .nav-home:hover { color: var(--gold); transform: translateY(-2px); opacity: 1; }
 
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 28px;
+        }
+
+        .nav-dropdown {
+            position: relative;
+        }
+
+        .nav-dropdown::after {
+            content: '';
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            height: 20px;
+        }
+
+        .nav-projects-label {
+            font-size: 0.7rem;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            color: var(--cream);
+            opacity: 0.75;
+            cursor: default;
+            transition: color 0.3s, opacity 0.3s;
+        }
+
+        .nav-dropdown:hover .nav-projects-label {
+            color: var(--gold);
+            opacity: 1;
+        }
+
+        .dropdown-menu {
+            position: absolute;
+            top: calc(100% + 16px);
+            right: 0;
+            background: rgba(15, 15, 15, 0.97);
+            border: 1px solid #2a2a2a;
+            border-top: 1px solid var(--gold);
+            min-width: 220px;
+            display: flex;
+            flex-direction: column;
+            opacity: 0;
+            pointer-events: none;
+            transform: translateY(8px);
+            transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+
+        .nav-dropdown:hover .dropdown-menu {
+            opacity: 1;
+            pointer-events: all;
+            transform: translateY(0);
+        }
+
+        .dropdown-menu a {
+            font-size: 0.65rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            text-decoration: none;
+            padding: 16px 24px;
+            border-bottom: 1px solid #1a1a1a;
+            transition: color 0.3s, padding-left 0.3s;
+        }
+
+        .dropdown-menu a:last-child { border-bottom: none; }
+
+        .dropdown-menu a:hover {
+            color: var(--gold);
+            padding-left: 32px;
+        }
+
         /* ── HERO BANNER ── */
         .hero {
             position: relative;
@@ -321,7 +395,17 @@
 <!-- Nav -->
 <nav>
     <a href="index.html" class="nav-logo">Amy Tran</a>
-    <a href="index.html" class="nav-home" aria-label="Home"><i class="fa-solid fa-house"></i></a>
+    <div class="nav-right">
+        <a href="index.html" class="nav-home" aria-label="Home"><i class="fa-solid fa-house"></i></a>
+        <div class="nav-dropdown">
+            <span class="nav-projects-label">Projects</span>
+            <div class="dropdown-menu">
+                <a href="NewWebsites.html">Websites &amp; Apps</a>
+                <a href="AiProjects.html">AI and ML</a>
+                <a href="noProjects.html">Other Projects</a>
+            </div>
+        </div>
+    </div>
 </nav>
 
 <!-- Hero Banner -->
