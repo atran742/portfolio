@@ -136,6 +136,7 @@
             color: var(--gold);
             padding-left: 32px;
         }
+
         /* ── HERO BANNER ── */
         .hero {
             position: relative;
@@ -225,6 +226,7 @@
         .project-section.reverse { direction: rtl; }
         .project-section.reverse > * { direction: ltr; }
 
+        /* ── MEDIA: shared base ── */
         .project-media {
             position: relative;
             overflow: hidden;
@@ -234,6 +236,7 @@
             justify-content: center;
         }
 
+        /* ── MEDIA: image variant ── */
         .project-media img {
             width: 100%;
             height: 100%;
@@ -249,6 +252,28 @@
             transform: scale(1.02);
         }
 
+        /* ── MEDIA: video (iframe) variant ── */
+        .project-media.video-media {
+            background: #000;
+            padding: 0;
+            align-items: stretch;
+        }
+
+        .project-media.video-media iframe {
+            width: 100%;
+            height: 100%;
+            min-height: 420px;
+            border: none;
+            display: block;
+            filter: brightness(0.9);
+            transition: filter 0.4s ease;
+        }
+
+        .project-section:hover .project-media.video-media iframe {
+            filter: brightness(1);
+        }
+
+        /* ── PROJECT INFO ── */
         .project-info {
             display: flex;
             flex-direction: column;
@@ -260,7 +285,7 @@
         .section-charcoal { background-color: var(--charcoal); }
         .section-green    { background-color: var(--green-dark); }
         .section-slate    { background-color: var(--slate-dark); }
-        .section-warm     { background-color: #1a140a; }
+        .section-blue     { background-color: #12464D; }
 
         .project-number {
             font-size: 0.6rem;
@@ -395,18 +420,79 @@
 
 <div class="gold-divider"></div>
 
+<!-- ── 01 Stock Kittens── -->
+<div class="project-section reveal">
+    <!-- IMAGE media -->
+    <div class="project-media section-charcoal">
+        <img src="images/stockKittens.png" alt="Image Captioner App">
+
+    </div>
+    <div class="project-info section-blue">
+        <div class="project-number">AI Agents / Python</div>
+        <h2 class="project-title">The Stock<br><em>Kittens</em></h2>
+        <p class="project-desc">
+            An AI agent built in a team of two which allows users to make better decision
+            when it comes to stock trading. The frontend, which was made with React, features a
+            chat feature, Trending stocks, and a dashboard depicting the number of stocks and politicians
+            which have traded. The model uses a politician dataset to trade the stocks and also
+            performs both linear regression and random forests to predict the trend of a certain
+            stock.The Agent uses Ollama as its LLM and a PostgreSQL database as its memory.
+        </p>
+        <div class="project-tags">
+            <span class="tag">Python</span>
+            <span class="tag">Yahoo Fiance</span>
+            <span class="tag">React</span>
+            <span class="tag">Linear Regression</span>
+            <span class="tag">Random Forests</span>
+            <span class="tag">Ollama</span>
+        </div>
+    </div>
+</div>
+
+<div class="gold-divider"></div>
+
+<!-- ── 02 ASL Hand Tracker ── -->
+<div class="project-section reverse reveal">
+    <!-- VIDEO media — note the added "video-media" class -->
+    <div class="project-media video-media">
+        <iframe
+                src="https://www.youtube.com/embed/RnvIn0q0UFg?si=6AhATbgFI5eckStA&autoplay=1&mute=1&loop=1&playlist=RnvIn0q0UFg"
+                allow="autoplay; encrypted-media" allowfullscreen>
+        </iframe>
+    </div>
+    <div class="project-info section-slate">
+        <div class="project-number"> Machine Learning / Computer Vision  </div>
+        <h2 class="project-title">ASL<br><em>Keyboard</em></h2>
+        <p class="project-desc">
+            A personal project created using MediaPipe Hands which allows users to practice
+            their ASL skills. Trained on personal collected data and trained using Random Forests,
+            users should be able to hold up an ASL alphabet letter, get a prediction, and enter
+            that prediction into the text box to create a fun message. The model also allows
+            for users to delete letters and add spaces in their message.
+        </p>
+        <div class="project-tags">
+            <span class="tag">Python</span>
+            <span class="tag">Mediapipe Hands</span>
+            <span class="tag">Random Forest</span>
+            <span class="tag">Computer Vision</span>
+            <span class="tag">UI</span>
+        </div>
+    </div>
+</div>
+
 <!-- ── 01 Image Captioner ── -->
 <div class="project-section reveal">
+    <!-- IMAGE media -->
     <div class="project-media section-charcoal">
         <img src="images/imageCapt.png" alt="Image Captioner App">
     </div>
     <div class="project-info section-green">
-        <div class="project-number">01 — Computer Vision / Python</div>
+        <div class="project-number">Computer Vision / Python</div>
         <h2 class="project-title">The Image<br><em>Captioner</em></h2>
         <p class="project-desc">
             An application built with cv2, YOLO, BLIP, and Tkinter alongside a team of 4.
-            Users can input any video or image and the app will automatically identify. I designed the entire frontend and helped select the
-            AI models powering the detections.
+            Users can input any video or image and the app will automatically identify objects.
+            I designed the entire frontend and helped select the AI models powering the detections.
         </p>
         <div class="project-tags">
             <span class="tag">Python</span>
@@ -424,10 +510,10 @@
 <!-- ── 02 Surveillance Research ── -->
 <div class="project-section reverse reveal">
     <div class="project-media section-charcoal">
-        <img src="images/survPics.png" alt="Surveillance Research Findings">
+        <img src="images/survPics.png" alt="Image Captioner App">
     </div>
     <div class="project-info section-slate">
-        <div class="project-number">02 — Data Science / Research</div>
+        <div class="project-number">Data Science / Research</div>
         <h2 class="project-title">Surveillance<br><em>Research</em></h2>
         <p class="project-desc">
             A two-person research project investigating how U.S. law enforcement agencies
@@ -446,6 +532,7 @@
         </div>
     </div>
 </div>
+
 
 <!-- Footer -->
 <footer>
